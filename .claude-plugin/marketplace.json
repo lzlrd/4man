@@ -1,0 +1,10 @@
+{
+  "name": "4man",
+  "owner": { "name": "Diab Neiroukh", "url": "https://github.com/lzlrd" },
+  "metadata": {
+    "description": "Home of the 4man plugin — an auto-invoked four-role dev crew (Planner, parallel Coders & Testers, fan-out Reviewer) that builds and reviews features in the requestor's own style."
+  },
+  "plugins": [
+    { "name": "4man", "source": "./", "description": "Four-role dev crew; auto-engages for feature work." }
+  ]
+}
