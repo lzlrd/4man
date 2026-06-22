@@ -243,8 +243,9 @@ Lead with the decision and where the work landed.
   `test-results.md`, `verdict.md`).
 - **In-place mode:** the work is committed on the current branch — that's the deliverable,
   nothing else to run. Show `git log --oneline <start-commit>..HEAD`.
-- **PR mode:** push the working branch and open a PR against `<default-branch>` —
-  `gh pr create` if `gh` is available, `glab mr create` for GitLab, else the host's
+- **PR mode:** push the working branch and open a PR against `<default-branch>` — the
+  GitHub MCP (`mcp__github__create_pull_request`) when the remote is GitHub, else
+  `gh pr create` if `gh` is available; `glab mr create` for GitLab, else the host's
   API/MCP; if nothing can open it, push the branch and give the user the compare URL. Put
   the Reviewer's verdict in the PR body and report the PR URL. **Do not merge it** — that's
   the human's (or the repo's) call.

@@ -121,15 +121,15 @@ Review an arbitrary diff, branch, or PR through the same fan-out — read-only, 
 
 ```sh
 /4man:code-review                 # current branch vs its default base
-/4man:code-review 123             # PR #123 (uses gh if available)
+/4man:code-review 123             # PR #123 (via GitHub MCP, else gh)
 /4man:code-review staged          # git diff --cached
 /4man:code-review working         # unstaged working tree
 /4man:code-review HEAD~3          # a range
 ```
 
 It bootstraps the security guidance, runs one `/security-review`, fans out compliance and
-correctness, and returns a confidence-scored verdict. For a PR with `gh` available it
-offers to post the findings as inline comments — only after you confirm.
+correctness, and returns a confidence-scored verdict. For a PR (via the GitHub MCP, else
+`gh`) it offers to post the findings as inline comments — only after you confirm.
 
 ## Models
 

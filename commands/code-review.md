@@ -7,8 +7,10 @@ Review the target derived from: $ARGUMENTS
 
 ## Resolve the review target
 - empty → diff of the current branch vs the default base: `git merge-base HEAD <default-branch>`.
-- a number → a PR: use `gh pr diff <n>` if `gh` is available and authenticated; else
-  fetch/checkout the PR branch and diff vs base.
+- a number → a PR: get its diff via the GitHub MCP (`mcp__github__pull_request_read`,
+  `method: get_diff`; derive `owner`/`repo` from the remote) when the remote is GitHub;
+  else `gh pr diff <n>` if `gh` is available and authenticated; else fetch/checkout the
+  PR branch and diff vs base.
 - a branch name → diff that branch vs the default base.
 - `staged` → `git diff --cached`; `working`/`unstaged` → `git diff`.
 - `HEAD~N`, a SHA, or `A..B` → that diff range.
@@ -42,5 +44,7 @@ Present the verdict: decision, then findings grouped by severity, each with conf
 and `file:line`. List low-confidence/possible-false-positives separately. This is a
 read-only review — do not modify code.
 
-If `gh` is available and the target was a PR, OFFER to post the findings as PR review
-comments, but only post after the user explicitly confirms.
+If the target was a PR, OFFER to post the findings as PR review comments — via the
+GitHub MCP (`mcp__github__pull_request_review_write` to open the review,
+`mcp__github__add_comment_to_pending_review` per finding, then `submit_pending`) when
+the remote is GitHub, else `gh` — but only post after the user explicitly confirms.
